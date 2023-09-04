@@ -6,7 +6,7 @@ import requests from "../../lib/Requests";
 const Home = () => {
   return (
     <>
-      <div className="home bg-black">
+      <div className="home bg-black overflow-hidden">
         <Navbar />
         <Content />
         <MovieRow

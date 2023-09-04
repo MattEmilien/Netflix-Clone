@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-
+import { axiosClient } from "../../client";
 const Movie = ({ movie }) => {
   const [like, setLike] = useState(false);
+  const handleClick = useCallback(async () => {
+    try {
+      const email = JSON.parse(localStorage.getItem("email"));
 
-  const handleClick = () => {
-    setLike(!like);
-  };
+      // Fetch the user's data
+      // TODO: fix this method as it only allows one movie to be liked at a time
+      const res = await axiosClient.patch(`/api/users?email=${email}`, {
+        movies: movie.title,
+      });
+      setLike(true);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [like, movie, setLike]);
 
   return (
     <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
@@ -22,7 +32,7 @@ const Movie = ({ movie }) => {
         </p>
         <motion.span
           whileHover={{ scale: 1.1 }} // Scale to 110% on hover
-          onClick={handleClick}
+          onClick={handleClick} // Call handleClick when clicked
         >
           {like ? (
             // TODO: Add animation when selected

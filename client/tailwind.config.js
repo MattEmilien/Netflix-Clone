@@ -5,13 +5,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-          "pge": "#181818",
-        },
-        fontFamily: {
-          "Default": ['Lato', 'Segoe'],
-        },
-  
+        pge: "#181818",
+      },
+      fontFamily: {
+        Default: ["Lato", "Segoe"],
+      },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide')],
-}
+  plugins: [require("tailwind-scrollbar-hide")],
+};

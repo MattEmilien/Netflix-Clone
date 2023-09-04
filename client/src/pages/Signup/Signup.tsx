@@ -1,9 +1,9 @@
 import "./Signup.css";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { MdNavigateNext } from "react-icons/md";
-
+import axios from "axios";
 const pageVariants = {
   initial: {
     opacity: 0,
@@ -23,6 +23,7 @@ const pageVariants = {
 const Signup: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -32,9 +33,28 @@ const Signup: React.FC = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add logic to handle form submission here
+
+    if (!email || !password) return alert("Please fill in all fields");
+
+    const requestBody = {
+      email: email.toLocaleLowerCase(),
+      password: password,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/register/",
+        requestBody
+      );
+      if (response.status === 201) {
+        alert(`Registered Successfully`);
+        navigate("/login"); // Redirect to the login page
+      }
+    } catch (error) {
+      console.log(`Registration attempt failed: ${error}`);
+    }
   };
 
   return (
