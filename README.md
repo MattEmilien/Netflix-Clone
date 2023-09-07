@@ -8,10 +8,8 @@ A Netflix clone web application created using React and ExpressJS, featuring a v
 
 - [Features](#features)
 - [Getting Started](#getting-started)
-- [File Structure](#file-structure)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [License](#license)
 
 
 ## Features :sparkles:
@@ -28,12 +26,18 @@ Clone the repository:
 
 1. Change into the project directory:
   `cd Netflix-Clone`
-2. INstall dependencies
+2. Install dependencies
    `npm install`
 3. Start the backend server (/server/) <- ExpressJS
    `npm start index.js`
-4 Start the frontend server (/client/) <- ViteJS
+4. Start the frontend server (/client/) <- ViteJS
    `npm run dev`
+   
+## Technologies Used :computer:
+React (VitJS)
+ExpressJS (NodeJS)
+TMDB API for movie data
+TailwindCSS
 
 Contributing :heart:
 Contributions are welcome! Please check out the Contributing Guidelines.
