@@ -34,7 +34,7 @@ Clone the repository:
    `npm run dev`
    
 ## Technologies Used :computer:
-React (VitJS)
+React (ViteJS)
 ExpressJS (NodeJS)
 TMDB API for movie data
 TailwindCSS
